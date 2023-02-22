@@ -12,6 +12,7 @@ list:	  /* nothing */
 	| list expr '\n'    { printf("\t%.8g\n", $2); }
 	;
 expr:	  NUMBER	{ $$ = $1; }
+	| '(' expr ')'  { $$ = $2; }
 	| '+' expr	{ $$ = $2; }  /* unary plus */
 	| '-' expr	{ $$ = -$2; }  /* unary minus */
 	| expr '+' expr	{ $$ = $1 + $3; }
